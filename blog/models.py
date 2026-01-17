@@ -18,6 +18,11 @@ class Post(models.Model):
         choices=Status,
         default=Status.DRAFT,
     )
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='blog_posts'
+    )
     class Meta:
         ordering = ['-publish']
         indexes = [
